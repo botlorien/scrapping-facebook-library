@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 # Define a route for the API
-@app.route('/api/facebook', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_facebook_ads():
     # Return a simple JSON response
     return jsonify({'message': [ts.get_facebook_ads()]})
