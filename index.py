@@ -1,15 +1,11 @@
-from flask import Flask, jsonify
+from fastapi import FastAPI
 import tasks as ts
+from mangum import Mangum
+app = FastAPI()
 
-app = Flask(__name__)
+@app.get("/")
+async def root():
+    content = await ts.get_facebook_ads()
+    return {"content": content}
 
-
-# Define a route for the API
-@app.route('/', methods=['GET'])
-def get_facebook_ads():
-    # Return a simple JSON response
-    return jsonify({'message': [ts.get_facebook_ads()]})
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+handler = Mangum(app)

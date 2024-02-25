@@ -1,16 +1,18 @@
-# This is a sample Python script.
+from fastapi import FastAPI
+import asyncio
+from pyppeteer import launch
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+app = FastAPI()
 
+async def fetch_with_pyppeteer():
+    browser = await launch(headless=True, args=['--no-sandbox', '--disable-dev-shm-usage'])
+    page = await browser.newPage()
+    await page.goto('http://example.com')
+    content = await page.content()
+    await browser.close()
+    return content
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+@app.get("/")
+async def root():
+    content = await fetch_with_pyppeteer()
+    return {"content": content}
