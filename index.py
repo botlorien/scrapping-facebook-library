@@ -22,7 +22,6 @@ class Facebook:
         chrome_options.add_argument("--disable-dev-shm-usage")
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
         self.driver.get(self.base_url)
-        time.sleep(20)
 
     def get_cards_ads(self):
         script = """
@@ -37,6 +36,10 @@ class Facebook:
         return self.driver.execute_script(script)
 
     def get_facebook_ads(self):
+        while not self.get_cards_ads():
+            cards_content = self.get_cards_ads()
+            print(cards_content)
+            time.sleep(1)
         cards_content = self.get_cards_ads()
         print(cards_content)
         self.driver.quit()
