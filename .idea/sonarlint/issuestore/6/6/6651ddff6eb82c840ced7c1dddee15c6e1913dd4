@@ -1,0 +1,6 @@
+
+Hdocker:S6596")Use a specific version tag for the image.(ğ°Û”8ªÌˆıİ1
+Fdocker:S6587"'Remove cache after installing packages.(‰É»8­Ìˆıİ1
+Fdocker:S6587"'Remove cache after installing packages.(š¯èş8¯Ìˆıİ1
+}docker:S6570"YSurround this variable with double quotes; otherwise, it can lead to unexpected behavior.(†àÅƒøÿÿÿÿ8¯ ™ÿİ1
+ddocker:S6579"@Include the ARG instruction in the build stage where it is used.(†àÅƒøÿÿÿÿ8¯ ™ÿİ1

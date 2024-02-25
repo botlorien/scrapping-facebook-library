@@ -15,3 +15,6 @@ A
 tasks.py,8\1\81724b6c348c66b3ce4a7f36d24d0849ab270dfe
 8
 index.py,6\4\6472638a56b927e3afcc8451f0e14ed178d59041
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
