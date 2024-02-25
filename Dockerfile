@@ -13,4 +13,4 @@ RUN apt-get update && apt-get install -y python3-pip && pip install -r requireme
 
 COPY . .
 
-CMD uvicorn index:app --host 0.0.0.0 --port $PORT
+CMD gunicorn --bind 0.0.0.0:$PORT index:app
