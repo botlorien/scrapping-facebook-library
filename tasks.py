@@ -2,11 +2,12 @@ from facebook import Facebook
 import dataprocessing as dp
 import asyncio
 
+face = Facebook()
+face.init_browser()
 
-async def get_facebook_ads():
-    face = Facebook()
-    await face.init_browser()
-    return dp.process_content_ads(await face.get_facebook_ads())
+
+def get_facebook_ads():
+    return dp.process_content_ads(face.get_facebook_ads())
 
 
 if __name__ == '__main__':
