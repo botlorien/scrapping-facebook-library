@@ -1,3 +1,5 @@
+import datetime
+
 from flask import Flask, jsonify
 import time
 from selenium import webdriver
@@ -65,7 +67,14 @@ def get_facebook_ads():
 def hello():
     # Return a simple JSON response
     return jsonify({'message': [get_facebook_ads()]})
-
+@app.route('/msg', methods=['GET'])
+def hello2():
+    # Return a simple JSON response
+    return jsonify({'message': [{'data':str(datetime.datetime.now())}]})
+@app.route('/msg2', methods=['GET'])
+def hello3():
+    # Return a simple JSON response
+    return jsonify({'message': 'Hello world'})
 
 if __name__ == '__main__':
     app.run(debug=True, port=10000)
