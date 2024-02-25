@@ -22,7 +22,7 @@ class Facebook:
         chrome_options.add_argument("--disable-dev-shm-usage")
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
         self.driver.get(self.base_url)
-        time.sleep(5)
+        time.sleep(20)
 
     def get_cards_ads(self):
         script = """
@@ -45,6 +45,8 @@ class Facebook:
 
 def process_content_ads(content):
     cards = {}
+    if len(content)==0:
+        return {'content':'empty'}
     for i, card in enumerate(content):
         card_col = {}
         columns = [col for col in card.split('\n') if len(col.strip()) > 0 and col not in ('\u200b')]
